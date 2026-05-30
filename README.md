@@ -1,9 +1,9 @@
 # ⬡ NetRecon — Network Vulnerability Scanner
 
 Ferramenta de reconhecimento e análise de vulnerabilidades de rede.
-Desenvolvida para fins educacionais e portfólio de Cibersegurança / Pentest.
 
-> ⚠️ **USE APENAS EM SISTEMAS PRÓPRIOS OU COM AUTORIZAÇÃO EXPLÍCITA.**
+
+
 
 ---
 
