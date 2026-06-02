@@ -1,80 +1,153 @@
-NetRecon - Network Vulnerability Scanner
+# 🔍 NetRecon
 
-NetRecon é um laboratório de cibersegurança desenvolvido em Python e Flask para reconhecimento de rede, identificação de serviços e análise básica de exposição de sistemas.
+### Network Vulnerability Scanner powered by Flask + Nmap
 
-O projeto evoluiu de um scanner baseado em sockets para uma solução que utiliza o motor real do Nmap para identificar serviços, versões e banners de aplicações encontradas durante a varredura.
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
+![Nmap](https://img.shields.io/badge/Nmap-Service%20Enumeration-green)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
-Projeto educacional e de portfólio. Utilize apenas em ambientes próprios ou com autorização explícita.
+---
 
-Funcionalidades
-Interface web desenvolvida com Flask
-Descoberta de portas abertas
-Identificação de serviços utilizando Nmap (-sV)
-Captura de versões e banners dos serviços
-Análise básica de risco
-Scan paralelo utilizando ThreadPoolExecutor
-Monitoramento de progresso em tempo real
-Geração de score de risco (0–100)
-Tecnologias Utilizadas
-Python
-Flask
-Nmap
-python-nmap
-HTML
-CSS
-ThreadPoolExecutor
-Estrutura do Projeto
+## 📖 About The Project
+
+NetRecon is a cybersecurity laboratory project developed for network reconnaissance, service enumeration and basic exposure assessment.
+
+The project started as a socket-based scanner and evolved into a solution powered by the real Nmap engine, enabling service identification, version detection and banner collection.
+
+> ⚠️ Educational and portfolio project. Use only on systems and networks you own or are authorized to assess.
+
+---
+
+## 🚀 Features
+
+✅ Open Port Discovery
+
+✅ Service Enumeration using Nmap (`-sV`)
+
+✅ Software Version Detection
+
+✅ Banner Collection
+
+✅ Basic Risk Assessment
+
+✅ Parallel Scanning with ThreadPoolExecutor
+
+✅ Flask Web Dashboard
+
+✅ Real-Time Progress Tracking
+
+---
+
+## 🛠️ Technologies
+
+* Python
+* Flask
+* Nmap
+* python-nmap
+* HTML
+* CSS
+* Multithreading
+
+---
+
+## 📂 Project Structure
+
+```text
 netrecon/
-│
 ├── app.py
-├── requirements.txt
-└── templates/
-    └── index.html
-Instalação
-1. Criar ambiente virtual
+├── index.html
+├── requisitos.txt
+├── modelos/
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### 1. Create a Virtual Environment
+
+```bash
 python -m venv venv
-2. Ativar ambiente virtual
+```
+
+### 2. Activate the Environment
 
 Windows:
 
+```bash
 venv\Scripts\activate
+```
 
 Linux/macOS:
 
+```bash
 source venv/bin/activate
-3. Instalar dependências
-pip install -r requirements.txt
-4. Instalar Nmap
+```
 
-Baixe e instale:
+### 3. Install Dependencies
 
-Nmap
-Npcap
+```bash
+pip install -r requisitos.txt
+```
 
-Durante a instalação do Npcap mantenha as opções padrão recomendadas.
+### 4. Install Nmap and Npcap
 
-Executando
+Download and install:
+
+* Nmap
+* Npcap
+
+Keep the default recommended options during installation.
+
+---
+
+## ▶️ Running the Application
+
+```bash
 python app.py
+```
 
-A aplicação ficará disponível em:
+Access the dashboard:
 
+```text
 http://127.0.0.1:5001
-Aprendizados
+```
 
-Durante o desenvolvimento deste projeto foram trabalhados conceitos de:
+---
 
-Redes TCP/IP
-Port Scanning
-Service Enumeration
-Banner Grabbing
-Flask
-APIs REST
-Multithreading
-Troubleshooting
-Segurança Ofensiva
-Avaliação de Risco
-Aviso Legal
+## 🎯 Concepts Applied
 
-Esta ferramenta foi desenvolvida exclusivamente para fins educacionais e de laboratório.
+* TCP/IP
+* Port Scanning
+* Service Enumeration
+* Banner Grabbing
+* REST APIs
+* Flask Development
+* Multithreading
+* Risk Assessment
+* Troubleshooting
+* Cybersecurity Fundamentals
 
-Nunca realize varreduras em sistemas ou redes sem autorização prévia.
+---
+
+## 📌 Roadmap
+
+* [x] Socket-Based Port Scanner
+* [x] Nmap Integration
+* [x] Service Enumeration
+* [ ] Report Exporting
+* [ ] Advanced Dashboard
+* [ ] CVE API Integration
+* [ ] Historical Scan Storage
+
+---
+
+## ⚖️ Legal Disclaimer
+
+This tool was developed exclusively for educational and research purposes.
+
+Do not scan, probe or assess systems without prior authorization.
+
+The author assumes no responsibility for misuse of this software.
