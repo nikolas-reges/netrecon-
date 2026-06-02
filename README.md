@@ -7,6 +7,12 @@
 ![Nmap](https://img.shields.io/badge/Nmap-Service%20Enumeration-green)
 ![Status](https://img.shields.io/badge/Status-Active-success)
 
+## 📸 Dashboard Preview
+
+<p align="center">
+  <img src="ativos/dashboard-preview.png" alt="NetRecon Dashboard" width="900">
+</p>
+
 ---
 
 ## 📖 About The Project
