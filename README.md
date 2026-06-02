@@ -25,7 +25,19 @@ The project started as a socket-based scanner and evolved into a solution powere
 
 ---
 
+## 🚀 Key Improvements
+
+- Migrated from mock vulnerability detection to real Nmap service enumeration
+- Implemented real banner collection and service version identification
+- Developed risk scoring based on discovered services
+- Built with Flask and Python for cybersecurity learning and portfolio purposes
+
+---
+
 ## 🚀 Features
+---
+
+
 
 ✅ Open Port Discovery
 
