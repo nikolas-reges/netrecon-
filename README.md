@@ -1,6 +1,6 @@
 # 🔍 NetRecon
 
-### Network Vulnerability Scanner powered by Flask + Nmap
+### Cybersecurity Reconnaissance Platform for Service Enumeration and Risk Assessment
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Flask](https://img.shields.io/badge/Flask-Web%20Framework-black)
