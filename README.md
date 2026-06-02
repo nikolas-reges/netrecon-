@@ -10,7 +10,7 @@
 ## 📸 Dashboard Preview
 
 <p align="center">
-  <img src="ativos/dashboard-preview.png" alt="NetRecon Dashboard" width="900">
+  <img src="dashboard-preview.png" alt="NetRecon Dashboard" width="900">
 </p>
 
 ---
