@@ -1,63 +1,80 @@
-# ⬡ NetRecon — Network Vulnerability Scanner
+NetRecon - Network Vulnerability Scanner
 
-Ferramenta de reconhecimento e análise de vulnerabilidades de rede.
+NetRecon é um laboratório de cibersegurança desenvolvido em Python e Flask para reconhecimento de rede, identificação de serviços e análise básica de exposição de sistemas.
 
+O projeto evoluiu de um scanner baseado em sockets para uma solução que utiliza o motor real do Nmap para identificar serviços, versões e banners de aplicações encontradas durante a varredura.
 
+Projeto educacional e de portfólio. Utilize apenas em ambientes próprios ou com autorização explícita.
 
-
----
-
-## 📁 Estrutura
-
-```
-vuln-scanner/
-├── app.py           ← Backend Flask + engine de scan
+Funcionalidades
+Interface web desenvolvida com Flask
+Descoberta de portas abertas
+Identificação de serviços utilizando Nmap (-sV)
+Captura de versões e banners dos serviços
+Análise básica de risco
+Scan paralelo utilizando ThreadPoolExecutor
+Monitoramento de progresso em tempo real
+Geração de score de risco (0–100)
+Tecnologias Utilizadas
+Python
+Flask
+Nmap
+python-nmap
+HTML
+CSS
+ThreadPoolExecutor
+Estrutura do Projeto
+netrecon/
+│
+├── app.py
 ├── requirements.txt
 └── templates/
-    └── index.html   ← Interface dark mode estilo terminal
-```
-
----
-
-## ⚙️ Como rodar
-
-```bash
-# 1. Ambiente virtual
+    └── index.html
+Instalação
+1. Criar ambiente virtual
 python -m venv venv
-venv\Scripts\activate       # Windows
-# source venv/bin/activate  # Linux/macOS
+2. Ativar ambiente virtual
 
-# 2. Dependências
-pip install flask
+Windows:
 
-# 3. Rodar
+venv\Scripts\activate
+
+Linux/macOS:
+
+source venv/bin/activate
+3. Instalar dependências
+pip install -r requirements.txt
+4. Instalar Nmap
+
+Baixe e instale:
+
+Nmap
+Npcap
+
+Durante a instalação do Npcap mantenha as opções padrão recomendadas.
+
+Executando
 python app.py
-```
 
-Acesse: **http://127.0.0.1:5000**
+A aplicação ficará disponível em:
 
----
+http://127.0.0.1:5001
+Aprendizados
 
-## 🔍 O que o scanner faz
+Durante o desenvolvimento deste projeto foram trabalhados conceitos de:
 
-- **Port Scanning** paralelo com ThreadPoolExecutor (até 50 threads)
-- **Banner Grabbing** — captura resposta inicial do serviço
-- **CVE Lookup** — cruza porta/serviço com base de vulnerabilidades conhecidas
-- **Risk Score** — calcula pontuação de risco (0-100) baseada nas descobertas
-- **Relatório visual** — exibe tudo em interface estilo terminal/pentest
+Redes TCP/IP
+Port Scanning
+Service Enumeration
+Banner Grabbing
+Flask
+APIs REST
+Multithreading
+Troubleshooting
+Segurança Ofensiva
+Avaliação de Risco
+Aviso Legal
 
-## 🧰 Tecnologias
+Esta ferramenta foi desenvolvida exclusivamente para fins educacionais e de laboratório.
 
-Python · Flask · Socket · Threading · Chart-free UI
-
----
-
-## 📌 Alvo de teste público (legal)
-
-Quer testar sem ter servidor próprio? Use o alvo oficial do Nmap:
-
-```
-scanme.nmap.org
-```
-
-Esse host existe especificamente para testes de port scanning.
+Nunca realize varreduras em sistemas ou redes sem autorização prévia.
