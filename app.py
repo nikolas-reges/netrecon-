@@ -12,6 +12,7 @@ import json
 import time
 import platform
 import subprocess
+import nmap
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -175,30 +176,45 @@ scan_results = {}
 scan_status  = {}
 
 
-def scan_port(host: str, port: int, timeout: float = 1.0) -> dict:
-    """Tenta conectar numa porta e retorna resultado."""
+def scan_port(host: str, port: int, timeout: float = 2.0) -> dict:
+    """Tenta conectar numa porta usando o motor REAL do Nmap."""
     try:
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(timeout)
-        result = sock.connect_ex((host, port))
-        sock.close()
-
-        if result == 0:
-            # Porta aberta — pega banner se possível
-            banner = grab_banner(host, port)
-            vuln_info = VULN_DB.get(port, {})
-            return {
-                "port":    port,
-                "status":  "ABERTA",
-                "service": vuln_info.get("service", "Desconhecido"),
-                "banner":  banner,
-                "vulns":   vuln_info.get("vulns", []),
-            }
-        else:
-            return {"port": port, "status": "FECHADA", "service": "", "banner": "", "vulns": []}
+        nm = nmap.PortScanner()
+        # Roda um scan real de versao (-sV) na porta selecionada
+        nm.scan(host, str(port), arguments='-sV')
+        
+        # Se o host respondeu e a porta esta aberta no Nmap
+        if host in nm.all_hosts() and port in nm[host]['tcp']:
+            port_data = nm[host]['tcp'][port]
+            state = port_data.get('state', '').upper()
+            
+            if state == 'OPEN':
+                service_name = port_data.get('name', 'Desconhecido')
+                product = port_data.get('product', '')
+                version = port_data.get('version', '')
+                banner = f"{product} {version}".strip() or "Sem banner"
+                
+                # Procura vulnerabilidades REAIS com base no servico encontrado
+                vulns = []
+                # Se o servico for HTTP antigo (sem TLS), gera um alerta real de criptografia
+                if service_name == 'http' and port != 443:
+                    vulns.append({
+                        "id": "HTTP-PLAIN",
+                        "severity": "MEDIO",
+                        "desc": f"Servico {product} sem TLS - trafego em texto puro, sujeito a interceptacao."
+                    })
+                
+                return {
+                    "port": port,
+                    "status": "ABERTA",
+                    "service": service_name.upper(),
+                    "banner": banner,
+                    "vulns": vulns
+                }
+                
+        return {"port": port, "status": "FECHADA", "service": "", "banner": "", "vulns": []}
     except Exception:
         return {"port": port, "status": "FILTRADA", "service": "", "banner": "", "vulns": []}
-
 
 def grab_banner(host: str, port: int, timeout: float = 2.0) -> str:
     """Tenta capturar o banner do serviço."""
@@ -377,7 +393,6 @@ def scan_result(scan_id):
 if __name__ == "__main__":
     print("=" * 60)
     print("  NetRecon — Network Vulnerability Scanner")
-    print("  ⚠  USE APENAS EM SISTEMAS PRÓPRIOS OU AUTORIZADOS")
-    print("  Acesse: http://127.0.0.1:5000")
+    print("  Acesse: http://127.0.0.1:5001")
     print("=" * 60)
-    app.run(debug=True, host="127.0.0.1", port=5000)
+    app.run(debug=True, host="127.0.0.1", port=5001)
